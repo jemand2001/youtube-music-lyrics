@@ -1,0 +1,17 @@
+button#jemand2001_lyrics-button {
+    top: 6em;
+    left: 2em;
+    background-color: transparent;
+    width: auto;
+    height: 34px;
+    padding: 0;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    margin: 0;
+    border: 0;
+}
+
+button#jemand2001_lyrics-button svg {
+    stroke: none;
+    fill: #909090;
+}
