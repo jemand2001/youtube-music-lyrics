@@ -30,10 +30,8 @@ if (location.pathname == "/watch") {
     });
   button.id = "jemand2001_lyrics-button";
   button.onclick = function () {
-    const searchQuery = new URLSearchParams({
-      q: query`${songTitle} ${artist}`,
-    });
-    window.open(`https://genius.com/search?${searchQuery}`, "_blank");
+    const lyricsPage = query`${artist} ${songTitle} lyrics`.replace(/\s+/g, "-");
+    window.open(`https://genius.com/${lyricsPage}`, "_blank");
   };
 
   controls = document.querySelector("div#right-controls .right-controls-buttons");
