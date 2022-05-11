@@ -8,7 +8,7 @@ Obviously, this isn't perfect -- if the song isn't on genius, the button will st
 
 To install:
 - download or clone this repository
-- visit [the extensions page](about://extensions)
+- visit about://extensions
 - enable developer mode (toggle in the top right corner)
 - press the "Load unpacked" button in the top left corner
 - navigate to where you downloaded this repository
