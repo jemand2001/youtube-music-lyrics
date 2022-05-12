@@ -18,7 +18,7 @@ let alreadyAdded = false;
 
 chrome.runtime.onMessage.addListener((msg, _, respond) => {
   respond("");
-  if (msg !== "update") return;
+  if (msg !== "update" || alreadyAdded) return;
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
   stylesheet.href = chrome.runtime.getURL("style.css");
