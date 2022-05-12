@@ -14,15 +14,18 @@ function query(strings, ...selectors) {
   ).join("");
 }
 
-if (location.pathname == "/watch") {
+let alreadyAdded = false;
+
+chrome.runtime.onMessage.addListener((msg, _, respond) => {
+  respond("");
+  if (msg !== "update") return;
   const stylesheet = document.createElement("link");
   stylesheet.rel = "stylesheet";
   stylesheet.href = chrome.runtime.getURL("style.css");
 
   document.head.append(stylesheet);
 
-  button = document.createElement("button");
-  // button.innerText = "Lyrics";
+  const button = document.createElement("button");
   fetch(chrome.runtime.getURL("icon.svg"))
     .then((response) => response.text())
     .then((icon) => {
@@ -30,10 +33,15 @@ if (location.pathname == "/watch") {
     });
   button.id = "jemand2001_lyrics-button";
   button.onclick = function () {
-    const lyricsPage = query`${artist} ${songTitle} lyrics`.replace(/\s+/g, "-");
+    const lyricsPage = query`${artist} ${songTitle} lyrics`.replace(
+      /\s+/g,
+      "-"
+    );
     window.open(`https://genius.com/${lyricsPage}`, "_blank");
   };
 
-  controls = document.querySelector("div#right-controls .right-controls-buttons");
-  controls.append(button);
-}
+  document
+    .querySelector("div#right-controls .right-controls-buttons")
+    .append(button);
+  alreadyAdded = true;
+});
