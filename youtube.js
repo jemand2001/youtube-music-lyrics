@@ -33,11 +33,12 @@ chrome.runtime.onMessage.addListener((msg, _, respond) => {
     });
   button.id = "jemand2001_lyrics-button";
   button.onclick = function () {
-    const lyricsPage = query`${artist} ${songTitle} lyrics`.replace(
-      /\s+/g,
-      "-"
-    );
-    window.open(`https://genius.com/${lyricsPage}`, "_blank");
+    const lyricsPage = query`${artist} ${songTitle}`
+      .replace("&", " and ")
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]/g, "")
+      .split("-feat")[0];  // remove featuring
+    window.open(`https://genius.com/${lyricsPage}-lyrics`, "_blank");
   };
 
   document
