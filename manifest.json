@@ -1,8 +1,8 @@
 
 {
     "manifest_version": 3,
-    "name": "Youtube Lyrics",
-    "description": "Adds a button to the YouTube player that will show the lyrics of the song playing.",
+    "name": "Youtube Enhancements",
+    "description": "Miscellaneous enhancements for YouTube Music",
     "version": "1.0",
     "permissions": [
         "webNavigation"
