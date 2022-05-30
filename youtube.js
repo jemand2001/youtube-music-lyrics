@@ -37,7 +37,7 @@ chrome.runtime.onMessage.addListener((msg, _, respond) => {
       .replace("&", " and ")
       .replace(/\s+/g, "-")
       .replace(/[^\w-]/g, "")
-      .split("-feat")[0];  // remove featuring
+      .split("-feat")[0]; // remove featuring
     window.open(`https://genius.com/${lyricsPage}-lyrics`, "_blank");
   };
 
@@ -45,4 +45,22 @@ chrome.runtime.onMessage.addListener((msg, _, respond) => {
     .querySelector("div#right-controls .right-controls-buttons")
     .append(button);
   alreadyAdded = true;
+});
+
+document.addEventListener("wheel", (e) => {
+  if (e.deltaY || !e.deltaX) return;
+
+  if (e.deltaX < 0) {
+    document
+      .querySelector(
+        "#left-controls > div > tp-yt-paper-icon-button.previous-button.style-scope.ytmusic-player-bar"
+      )
+      .click();
+  } else {
+    document
+      .querySelector(
+        "#left-controls > div > tp-yt-paper-icon-button.next-button.style-scope.ytmusic-player-bar"
+      )
+      .click();
+  }
 });
